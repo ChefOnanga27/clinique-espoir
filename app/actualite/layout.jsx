@@ -1,11 +1,10 @@
 import React from 'react'
 
-function layoutActu() {
+function LayoutActualite({ children }) {
   return (
-    <div>
-      
-    </div>
+    <main>
+      {children}
+    </main>
   )
 }
-
-export default layoutActu;
+export default LayoutActualite;

@@ -62,25 +62,25 @@ export default function Header() {
       </div>
 
       {/* NAVIGATION */}
-      <nav className="bg-red-800 text-white py-4">
+      <nav className="bg-red-800 text-black py-4">
         <ul className="flex justify-center space-x-6">
           <li>
-            <Link href="/" className="hover:underline">Accueil</Link>
+            <Link href="/" className="hover:underline text-white">Accueil</Link>
           </li>
 
           {/* A PROPOS */}
           <li className="relative">
-            <button onClick={() => toggleMenu("apropos")} className="hover:underline">
+            <button onClick={() => toggleMenu("apropos")} className="hover:underline text-white">
               À propos
             </button>
             {openMenu === "apropos" && (
-              <Dropdown items={apropos} basePath="/a-propos" onClick={closeMenu} />
+              <Dropdown items={apropos} basePath="/apropos" onClick={closeMenu} />
             )}
           </li>
 
           {/* SERVICES */}
           <li className="relative">
-            <button onClick={() => toggleMenu("services")} className="hover:underline">
+            <button onClick={() => toggleMenu("services")} className="hover:underline text-white">
               Services
             </button>
             {openMenu === "services" && (
@@ -90,7 +90,7 @@ export default function Header() {
 
           {/* ACTUALITÉS */}
           <li className="relative">
-            <button onClick={() => toggleMenu("actualites")} className="hover:underline">
+            <button onClick={() => toggleMenu("actualites")} className="hover:underline text-white">
               Actualités & Médias
             </button>
             {openMenu === "actualites" && (
@@ -100,7 +100,7 @@ export default function Header() {
 
           {/* CARRIÈRE */}
           <li className="relative">
-            <button onClick={() => toggleMenu("carriere")} className="hover:underline">
+            <button onClick={() => toggleMenu("carriere")} className="hover:underline text-white">
               Carrière
             </button>
             {openMenu === "carriere" && (
@@ -109,7 +109,7 @@ export default function Header() {
           </li>
 
           <li>
-            <Link href="/contact" className="hover:underline">Contact</Link>
+            <Link href="/contact" className="hover:underline text-white">Contact</Link>
           </li>
         </ul>
       </nav>

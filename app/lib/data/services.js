@@ -3,47 +3,78 @@
 ========================= */
 export const services = [
   {
-    slug: "laboratoire",
-    title: "Service de Laboratoire",
+    slug: "consultations-generales",
+    title: "Consultations Générales",
     description:
-      "Notre service de laboratoire offre des analyses médicales précises et rapides pour un diagnostic fiable.",
+      "Soins primaires pour toute la famille avec des médecins généralistes expérimentés.",
+    image: "/clinique.jpg",
+    route: "/services/consultations-generales",
+  },
+  {
+    slug: "urgences",
+    title: "Soins d’Urgence",
+    description:
+      "Prise en charge rapide et efficace des situations médicales urgentes, 24h/24.",
+    image: "/radiologie.jpg",
+    route: "/services/urgences",
+  },
+  {
+    slug: "laboratoire",
+    title: "Laboratoire Médical",
+    description:
+      "Analyses médicales précises et rapides pour un diagnostic fiable.",
     image: "/laboratoire.jpg",
     route: "/services/laboratoire",
   },
   {
-    slug: "gynecologie",
-    title: "Service de Gynécologie",
+    slug: "imagerie-medicale",
+    title: "Imagerie Médicale",
     description:
-      "Soins complets pour la santé féminine, incluant consultations, examens prénataux et traitements spécialisés.",
+      "Examens d’imagerie modernes (radiographie, échographie, scanner) pour un diagnostic précis.",
+    image: "/clinic.png",
+    route: "/services/imagerie-medicale",
+  },
+  {
+    slug: "consultations-specialisees",
+    title: "Consultations Spécialisées",
+    description:
+      "Consultations avec des médecins spécialistes pour une prise en charge adaptée à chaque pathologie.",
+    image: "/infirmier.jpg",
+    route: "/services/consultations-specialisees",
+  },
+  {
+    slug: "soutien-psychologique",
+    title: "Soutien Psychologique",
+    description:
+      "Accompagnement psychologique et soutien émotionnel pour améliorer le bien-être mental.",
+    image: "/psychologie.jpg",
+    route: "/services/soutien-psychologique",
+  },
+  {
+    slug: "gynecologie",
+    title: "Gynécologie",
+    description:
+      "Soins complets pour la santé féminine : consultations, suivi prénatal et traitements spécialisés.",
     image: "/gynecologie.jpg",
     route: "/services/gynecologie",
   },
   {
     slug: "pediatrie",
-    title: "Service de Pédiatrie",
+    title: "Pédiatrie",
     description:
-      "Soins médicaux dédiés aux enfants, assurant leur santé et bien-être de la naissance à l’adolescence.",
+      "Soins médicaux dédiés aux enfants, de la naissance à l’adolescence.",
     image: "/pediatrie.jpg",
     route: "/services/pediatrie",
   },
   {
-    slug: "general",
-    title: "Consultations Générales",
-    description:
-      "Soins primaires pour toute la famille avec des médecins généralistes expérimentés.",
-    image: "/services/general.jpg",
-    route: "/services/general",
-  },
-  {
     slug: "hospitalisation",
-    title: "Service d’Hospitalisation",
+    title: "Hospitalisation",
     description:
       "Soins hospitaliers de qualité avec des installations modernes et une équipe médicale dédiée.",
-    image: "/services/hospitalisation.jpg",
+    image: "/services.jpg",
     route: "/services/hospitalisation",
   },
 ];
-
 /* =========================
    À PROPOS
 ========================= */
@@ -51,11 +82,13 @@ export const apropos = [
   {
     slug: "history",
     title: "Notre Histoire",
+    image: "/clinique.jpg",
     route: "/about/history",
   },
   {
     slug: "team",
     title: "Notre Équipe",
+    image: "/personnel.jpg",
     route: "/about/team",
   },
 ];
@@ -100,7 +133,7 @@ export const actualites = [
     description:
       "Ouverture officielle d’un nouveau centre équipé des dernières technologies médicales.",
     image: "/actualites/evenement1.jpg",
-    route: "/actualite/news/evenement1",
+    route: "/actualite/evenement1",
   },
   {
     slug: "evenement2",
@@ -108,7 +141,7 @@ export const actualites = [
     description:
       "Campagne dédiée à la promotion de la santé mentale et du bien-être.",
     image: "/actualites/evenement2.jpg",
-    route: "/actualite/news/evenement2",
+    route: "/actualite/evenement2",
   },
   {
     slug: "evenement3",
@@ -116,7 +149,7 @@ export const actualites = [
     description:
       "Atelier interactif axé sur la nutrition et les bonnes pratiques de santé.",
     image: "/actualites/evenement3.jpg",
-    route: "/actualite/news/evenement3",
+    route: "/actualite/evenement3",
   },
 ];
 
@@ -130,7 +163,7 @@ export const news = [
     description:
       "Lancement de la télémédecine pour faciliter l’accès aux consultations à distance.",
     image: "/news/nouveau-service.jpg",
-    route: "/actualite/news/nouveau-service",
+    route: "/actualite/nouveau-service",
   },
   {
     slug: "recherche-medicale",
@@ -138,7 +171,7 @@ export const news = [
     description:
       "Découverte et amélioration des traitements grâce à la recherche médicale.",
     image: "/news/recherche-medicale.jpg",
-    route: "/actualite/news/recherche-medicale",
+    route: "/actualite/recherche-medicale",
   },
   {
     slug: "evenement-communautaire",
@@ -146,7 +179,7 @@ export const news = [
     description:
       "Participation active de la clinique à un événement de santé communautaire.",
     image: "/news/evenement-communautaire.jpg",
-    route: "/actualite/news/evenement-communautaire",
+    route: "/actualite/evenement-communautaire",
   },
 ];
 

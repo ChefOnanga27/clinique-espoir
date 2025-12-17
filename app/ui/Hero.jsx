@@ -5,22 +5,21 @@ import { motion, AnimatePresence } from "framer-motion";
 const images = [
   "/animation.png",
   "/animation2.png",
-  "/animation3.jpg" // ajoute autant que tu veux
+  "/animation3.jpg"
 ];
 
 function Hero() {
   const [current, setCurrent] = useState(0);
 
-  // Change l'image toutes les X secondes
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 5000); // 5 secondes par slide
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="relative w-full h-175 overflow-hidden">
+    <div className="relative pt-20 w-full h-[50vh] md:h-[90vh] lg:h-[85vh] overflow-hidden">
       <AnimatePresence>
         <motion.div
           key={current}
@@ -33,7 +32,6 @@ function Hero() {
         />
       </AnimatePresence>
 
-      {/* Overlay optionnel pour le contraste */}
       <div className="absolute inset-0"></div>
     </div>
   );

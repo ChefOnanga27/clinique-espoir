@@ -24,7 +24,7 @@ export default function Partenaire() {
             </h1>
       
             {/* Logos */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 items-center justify-items-center">
+            <div className="grid grid-cols-4 sm:grid-cols-3 md:grid-cols-4 gap-10 items-center justify-items-center">
               {imageLoader.map((item, index) => (
                 <div
                   key={index}

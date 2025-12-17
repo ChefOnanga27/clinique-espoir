@@ -7,7 +7,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Clinique Espoir",
-  description: "Nous prenons soin de votre santé mentale.",
+  description: "Nous prenons soin de votre santé et nous vous accompagnons dans votre parcours de soins.",
   icons: {
     icon: "/logo.jpg",
     shortcut: "/logo.jpg",

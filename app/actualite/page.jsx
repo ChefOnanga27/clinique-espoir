@@ -9,7 +9,7 @@ export default function ActualiteIndex() {
   const latest = [...actualites, ...news].slice(0, 6);
 
   return (
-    <LayoutActualite>
+    <main className="w-full flex">
       <HeroSection
         title="Actualités & Médias"
         bgImage="/actualites/hero.jpg"
@@ -38,6 +38,6 @@ export default function ActualiteIndex() {
 
         <Actu articles={latest} />
       </section>
-    </LayoutActualite>
+    </main>
   );
 }

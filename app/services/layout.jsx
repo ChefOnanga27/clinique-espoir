@@ -1,8 +1,7 @@
-import HeroSection from "../ui/HeroSection";
 
 export default function ServiceLayout({ children}) {
   return (
-    <main className={`service-theme`}>
+    <main className="text-black bg-gray-100 pb-6">
       {children}
     </main>
   );

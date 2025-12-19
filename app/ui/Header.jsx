@@ -29,7 +29,7 @@ export default function Header() {
   };
 
   return (
-    <header className="w-full fixed top-0 z-50 shadow-md bg-white">
+    <header className="w-full fixed top-0 z-50 shadow-md bg-white text-black">
       {/* TOP BAR */}
       <div className="flex justify-between items-center px-6 py-2">
         {/* HAMBURGER MOBILE */}

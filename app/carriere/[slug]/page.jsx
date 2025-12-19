@@ -41,13 +41,13 @@ export default async function CarrierePage({ params }) {
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
           <div>
-            <Image
+            {/* <Image
             src="/medecin.jpg"
             alt="Exemple contenu"
             className="rounded-lg shadow-lg"
-            width={800}
-            height={100}
-          />
+            width={400}
+            height={80}
+          /> */}
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis ad reiciendis tenetur, aliquid rerum ea asperiores, sit, minima tempore ducimus obcaecati debitis cupiditate cumque! Voluptatibus adipisci magnam quod similique itaque!
           </p>

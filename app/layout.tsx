@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className={`${ptSansNarrow.className}`}>
+      <body className={`${ptSansNarrow.className} text-black bg-white`}>
         <Header /> {/* UN SEUL HEADER pour tout le site */}
         {children}
         <Partenaire />

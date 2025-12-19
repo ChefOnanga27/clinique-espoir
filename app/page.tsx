@@ -14,162 +14,244 @@ const services = [
   { name: "Soutien Psychologique", icon: <FaHandsHelping />, href: "/services/soutien-psychologique" },
 ];
 
+interface BentoItem {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  size?: "small" | "medium" | "large";
+}
+
+const bentoItems: BentoItem[] = [
+  { id: 1, title: "Équipe Médicale", description: "Nos médecins dévoués", image: "/medecin0.jpg", size: "large" },
+  { id: 2, title: "Soins Modernes", description: "Technologies avancées", image: "/medecin1.jpg", size: "medium" },
+  { id: 3, title: "Expertise", description: "Personnel qualifié", image: "/medecin2.jpg", size: "small" },
+  { id: 4, title: "Consultation", description: "Suivi personnalisé", image: "/medecin3.jpg", size: "small" },
+  { id: 5, title: "Laboratoire", description: "Analyses précises", image: "/medecin4.jpg", size: "small" },
+  { id: 6, title: "Laboratoire", description: "Analyses précises", image: "/medecin5.jpg", size: "small" },
+  { id: 7, title: "Imagerie", description: "Diagnostics avancés", image: "/medecin6.jpg", size: "medium" },
+
+];
+
 export default function Page() {
   return (
-    <main className="bg-white text-gray-900">
+    <main className="bg-white text-gray-900 flex flex-col">
       {/* HERO */}
       <Hero />
 
-      {/* GRID SERVICES */}
-<section className="px-4 sm:px-6 py-10">
-  <h1 className="text-3xl sm:text-4xl text-center font-bold mb-8">
-    Nos Services
-  </h1>
+      {/* SECTION SERVICES */}
+      <section className="px-4 sm:px-6 py-10 bg-white">
+        <h1 className="text-3xl sm:text-4xl text-center font-bold mb-8">
+          Découvrez nos services
+        </h1>
 
-  <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 gap-4 md:gap-6">
-    {services.map((service, index) => (
-      <Link
-        key={index}
-        href={service.href}
-        className="
-          flex flex-col items-center justify-center
-          border border-amber-600
-          p-6 sm:p-8
-          rounded-xl shadow
-          text-center
-          hover:bg-red-700 hover:text-white
-          transition-all duration-300
-        "
-      >
-        <div className="text-3xl sm:text-4xl mb-4">
-          {service.icon}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-10 my-20">
+          {services.map((service, index) => (
+            <Link
+              key={index}
+              href={service.href}
+              className="relative flex flex-col items-center justify-center group cursor-pointer"
+            >
+              {/* Losange extérieur */}
+              <div className="w-24 h-24 bg-red-700 border-2 border-white flex items-center justify-center rotate-45 transition-transform duration-500 group-hover:-rotate-45">
+                {/* Losange intérieur */}
+                <div className="w-20 h-20 bg-amber-500 border-2 border-white flex items-center justify-center -rotate-45 transition-transform duration-500 group-hover:rotate-45">
+                  {/* Icône fixe */}
+                  <span className="text-4xl rotate-0 text-white">
+                    {service.icon}
+                  </span>
+                </div>
+              </div>
+
+              {/* Nom du service */}
+              <h2 className="font-semibold text-xs sm:text-sm mt-4 px-1 text-center">
+                {service.name}
+              </h2>
+
+              {/* Tooltip */}
+              <div className="absolute z-50 top-[120%] w-48 p-3 bg-white text-black border border-gray-300 rounded shadow-lg opacity-0 transition-opacity duration-500 pointer-events-none group-hover:opacity-100">
+                <p className="text-xs leading-tight">
+                  {service.name} — cliquez pour en savoir plus.
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
 
-        <span className="font-medium text-base sm:text-lg">
-          {service.name}
-        </span>
-      </Link>
-    ))}
-  </div>
-  <div className="flex justify-center mt-8">
-    <Link href="/services">
-      <button className="bg-amber-500 text-white px-6 py-2 rounded hover:underline transition">
-        Voir plus
-      </button>
-    </Link>
-  </div>
-</section>
+        <div className="flex justify-center mt-8">
+          <Link href="/services">
+            <button className="bg-amber-500 text-white px-6 py-3 rounded-lg hover:bg-amber-600 transition duration-300">
+              Voir tous nos services
+            </button>
+          </Link>
+        </div>
+      </section>
 
+      {/* GALERIE BENTO */}
+      <section className="px-4 sm:px-6 md:px-20 py-10 bg-gray-50">
+        <h2 className="text-3xl font-bold mb-8 text-center">Notre Clinique</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:grid-rows-3 gap-4 auto-rows-fr">
+          {bentoItems.map((item) => {
+            let spanClass = "col-span-1 row-span-1";
+
+            if (item.size === "medium") spanClass = "sm:col-span-2 row-span-1";
+            if (item.size === "large") spanClass = "sm:col-span-2 md:row-span-2";
+
+            return (
+              <div
+                key={item.id}
+                className={`${spanClass} relative overflow-hidden rounded-lg shadow-lg hover:scale-105 transition-transform duration-300 min-h-[200px]`}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-4">
+                  <h3 className="font-semibold text-lg">{item.title}</h3>
+                  <p className="text-sm">{item.description}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
 
       {/* IMAGE + TEXTE */}
-      <section className="relative h-[50vh] sm:h-[60vh] mx-4 md:mx-20 my-10 overflow-hidden rounded-3xl">
-  <Image
-    src="/clinic.png"
-    alt="Clinique"
-    fill
-    className="object-cover"
-    priority
-  />
-
-  <div className="absolute inset-0 bg-black/40 flex items-end md:items-center justify-center md:justify-end">
-    <div className="w-full md:w-1/3 p-5 md:p-6 text-white space-y-3 md:space-y-4 bg-black/40 md:bg-transparent">
-      <h2 className="text-base md:text-lg font-semibold uppercase">
-        Lorem Ipsum
-      </h2>
-
-      <p className="leading-relaxed text-sm md:text-base">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </p>
-
-      <ul className="list-disc list-inside space-y-1 text-sm md:text-base">
-        <li>Lorem ipsum dolor sit amet</li>
-        <li>Consectetur adipiscing elit</li>
-        <li>Sed do eiusmod tempor</li>
-        <li>Ut labore et dolore magna</li>
-      </ul>
-    </div>
-  </div>
-</section>
-     <section className="flex flex-col md:flex-row gap-6 px-4 md:px-20 mb-10">
-  {/* ACTUALITÉS */}
-  <div className="bg-pink-200 p-6 md:p-10 rounded-xl shadow flex-1 flex flex-col">
-    <h2 className="text-xl md:text-2xl font-bold mb-4 text-red-800">
-      Actualités & Évènements
-    </h2>
-
-    <div className="relative w-full h-56 sm:h-64 md:h-80 rounded-lg overflow-hidden">
-      <video
-        src="/proc.mp4"
-        autoPlay
-        muted
-        loop
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-black/40"></div>
-    </div>
-
-    <div className="mt-4 flex justify-center">
-      <Link
-        href="/actualite"
-        className="bg-amber-600 text-white px-6 py-2 rounded hover:bg-red-800 transition"
-      >
-        Voir plus
-      </Link>
-    </div>
-  </div>
-
-  {/* CONTACT */}
-  <div className="bg-pink-200 p-6 md:p-10 rounded-xl shadow flex-1">
-    <h2 className="text-xl md:text-2xl font-bold mb-4 text-red-800">
-      Contactez-nous
-    </h2>
-
-    <p className="text-base md:text-lg mb-2">
-      Pour toute question générale :
-    </p>
-
-    <p className="text-base md:text-lg font-semibold mb-2">
-      ceeproccl@gmail.com
-    </p>
-
-    <p className="text-base md:text-lg mb-4">
-      Demandes de renseignements : ceeproccl@gmail.com
-    </p>
-
-    <div className="flex items-center space-x-2">
-      <FaPhone className="text-red-700" />
-      <p className="text-base md:text-lg">
-        +241 66 36 12 19
-      </p>
-    </div>
-  </div>
-</section>
-      <section className="flex flex-col md:flex-row mx-4 md:mx-20 my-10 rounded-xl overflow-hidden shadow-lg">
-  {/* TEXTE */}
-  <div className="bg-red-700 text-white flex-1 flex flex-col justify-center px-6 py-8 md:px-10 md:py-12">
-    <h2 className="text-xl md:text-3xl font-semibold mb-4 uppercase">
-      À propos de la clinique
-    </h2>
-
-    <p className="text-sm md:text-base leading-7 text-white/90">
-      La Clinique de l&apos;Espoir et de l&apos;Espérance (CEE PROC CL) est un
-      établissement de santé privé situé à Libreville, Gabon.
-      Fondée en 2020, elle s&apos;engage à fournir des soins médicaux de haute
-      qualité.
-    </p>
-  </div>
-
-  {/* IMAGE */}
-  <div className="relative flex-1 h-56 sm:h-64 md:h-auto">
+     <section className="w-full grid grid-cols-[4fr_1fr]  px-4 sm:px-6 md:px-20 mb-7   overflow-hidden ">
+  {/* Image */}
+  <div className="relative w-full max-h-[150px]">
     <Image
-      src="/propo.jpg"
-      alt="Clinique Espoir"
+      src="/clinic.png"
+      alt="Clinique de l'Espoir"
       fill
-      className="object-cover"
-      priority
+      className="object-cover rounded-l-lg shadow-lg"
     />
   </div>
+
+  {/* Texte */}
+  <div className="flex items-center justify-center bg-red-800 text-white rounded-r-lg p-6 max-h-[150px]">
+    <h1 className="text-xl max-md:text-sm font-bold text-center md:text-left">
+      Notre clinique vous attend pour vos soins
+    </h1>
+  </div>
 </section>
+
+
+    
+
+      {/* ACTUALITÉS & CONTACT */}
+      <section className="flex flex-col md:flex-row gap-6 px-4 md:px-20 mb-10">
+        {/* ACTUALITÉS */}
+        <div className="bg-pink-200 p-6 md:p-10 rounded-xl shadow-lg flex-1 flex flex-col">
+          <h2 className="text-xl md:text-2xl font-bold mb-4 text-red-800">
+            Actualités & Évènements
+          </h2>
+
+          <div className="w-full h-56 sm:h-64 md:h-80 rounded-lg flex-grow">
+            <video
+              src="/proc.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+              aria-label="Vidéo de présentation de la clinique"
+            />
+            <div className=" inset-0 bg-black/30"></div>
+          </div>
+
+          <div className="mt-6 flex justify-center">
+            <Link
+              href="/actualite"
+              className="bg-amber-600 text-white px-6 py-3 rounded-lg hover:bg-red-800 transition duration-300"
+            >
+              Voir toutes les actualités
+            </Link>
+          </div>
+        </div>
+
+        {/* CONTACT */}
+        <div className="bg-pink-200 p-6 md:p-10 rounded-xl shadow-lg flex-1">
+          <h2 className="text-xl md:text-2xl font-bold mb-6 text-red-800">
+            Contactez-nous
+          </h2>
+
+          <div className="space-y-4">
+            <div>
+              <p className="text-base md:text-lg mb-2 font-medium">
+                Pour toute question générale :
+              </p>
+              <a 
+                href="mailto:ceeproccl@gmail.com"
+                className="text-base md:text-lg font-semibold text-red-700 hover:underline"
+              >
+                ceeproccl@gmail.com
+              </a>
+            </div>
+
+            <div>
+              <p className="text-base md:text-lg mb-2 font-medium">
+                Demandes de renseignements :
+              </p>
+              <a 
+                href="mailto:ceeproccl@gmail.com"
+                className="text-base md:text-lg font-semibold text-red-700 hover:underline"
+              >
+                ceeproccl@gmail.com
+              </a>
+            </div>
+
+            <div className="flex items-center space-x-3 pt-2">
+              <FaPhone className="text-red-700 text-xl" />
+              <a 
+                href="tel:+24166361219"
+                className="text-base md:text-lg font-semibold hover:text-red-700 transition"
+              >
+                +241 66 36 12 19
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* À PROPOS */}
+      <section className="flex flex-col md:flex-row mx-4 md:mx-20 my-10 rounded-xl overflow-hidden shadow-xl">
+        {/* TEXTE */}
+        <div className="bg-red-700 text-white flex-1 flex flex-col justify-center px-6 py-8 md:px-10 md:py-12">
+          <h2 className="text-xl md:text-3xl font-semibold mb-4 uppercase">
+            À propos de la clinique
+          </h2>
+
+          <p className="text-sm md:text-base leading-7 text-white/90">
+            La Clinique de l&apos;Espoir et de l&apos;Espérance (CEE PROC CL) est un
+            établissement de santé privé situé à Libreville, Gabon.
+            Fondée en 2020, elle s&apos;engage à fournir des soins médicaux de haute
+            qualité avec compassion et professionnalisme.
+          </p>
+
+          <Link 
+            href="/a-propos" 
+            className="mt-6 inline-block bg-amber-500 text-white px-6 py-3 rounded-lg hover:bg-amber-600 transition duration-300 w-fit"
+          >
+            En savoir plus
+          </Link>
+        </div>
+
+        {/* IMAGE */}
+        <div className="relative flex-1 h-56 sm:h-64 md:h-auto min-h-[300px]">
+          <Image
+            src="/propo.jpg"
+            alt="Clinique de l'Espoir et de l'Espérance"
+            fill
+            className="object-cover"
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
+      </section>
     </main>
   );
 }

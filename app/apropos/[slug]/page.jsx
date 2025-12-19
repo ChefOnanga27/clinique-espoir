@@ -13,7 +13,7 @@ export default async function AproposPage({ params }) {
   if (!apropo) return notFound();
 
   return (
-    <AproposLayout>
+    <AproposLayout >
       <HeroSection title={apropo.title} image={apropo.image} />
 
       <div className="max-w-4xl mx-auto my-12 px-4">
